@@ -1,0 +1,13 @@
+spring:
+  jackson:
+    default-property-inclusion: non_null
+  jpa:
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+  auth:
+    admin:
+      password: password
+      email: admin@mail.com
