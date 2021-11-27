@@ -24,7 +24,7 @@ public class AuthController implements AuthApi {
 
   @Override
   public UserModel signUp(UserDto userDto) {
-    return modelAssembler.toModel(authService.signUp(userDto, Role.ROLE_USER));
+    return modelAssembler.toModel(authService.signUp(userDto, Role.ROLE_STUDENT));
   }
 
   @Override

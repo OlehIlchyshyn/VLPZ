@@ -62,6 +62,7 @@ public class AuthServiceImpl implements AuthService {
 
   @Override
   public void signOut() {
+    log.info("signing out");
     SecurityContextHolder.clearContext();
   }
 

@@ -9,5 +9,5 @@ spring:
 
   auth:
     admin:
-      password: password
+      password: admin
       email: admin@mail.com

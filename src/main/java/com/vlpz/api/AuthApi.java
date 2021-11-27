@@ -35,7 +35,7 @@ public interface AuthApi {
 
   @ApiOperation("Sign out current user from the system")
   @ApiResponse(code = 204, message = "No content")
-  @GetMapping("/singout")
+  @GetMapping("/signout")
   ResponseEntity<Void> signOut();
 
 }
