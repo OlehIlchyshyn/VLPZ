@@ -1,6 +1,6 @@
 package com.vlpz.controller;
 
-import com.vlpz.api.UserApi;
+import com.vlpz.api.AccountApi;
 import com.vlpz.controller.assembler.UserModelAssembler;
 import com.vlpz.controller.model.UserModel;
 import com.vlpz.dto.UserDto;
@@ -16,7 +16,7 @@ import static com.vlpz.service.impl.UserServiceImpl.mapUserToUserDto;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-public class UserController implements UserApi {
+public class AccountController implements AccountApi {
 
   private final UserService userService;
   private final UserModelAssembler modelAssembler;

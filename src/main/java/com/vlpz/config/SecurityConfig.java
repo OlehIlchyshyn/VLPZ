@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -40,7 +41,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     http
         .authorizeRequests()
           .antMatchers("/api/auth/*").permitAll()
-          .antMatchers("/api/user/*").hasAnyRole("STUDENT", "ADMIN")
+          .antMatchers("/api/account/*").hasAnyRole("STUDENT", "ADMIN")
+          .antMatchers(HttpMethod.POST, "/api/task").hasRole("ADMIN")
+          .antMatchers(HttpMethod.PUT, "api/task/*").hasRole("ADMIN")
+          .antMatchers(HttpMethod.DELETE, "api/task/*").hasRole("ADMIN")
+          .antMatchers(HttpMethod.GET, "/api/task").hasAnyRole("STUDENT", "ADMIN")
+          .antMatchers(HttpMethod.GET, "api/task/*").hasAnyRole("STUDENT", "ADMIN")
+          .antMatchers(HttpMethod.POST, "api/task/*").hasAnyRole("STUDENT", "ADMIN")
           .antMatchers("/api/admin/*").hasRole("ADMIN")
           .anyRequest().authenticated()
           .and()

@@ -19,10 +19,10 @@ import org.springframework.web.bind.annotation.*;
     @ApiResponse(code = 404, message = "Not found"),
     @ApiResponse(code = 500, message = "Internal Server Error")
 })
-@RequestMapping("/api/user")
-public interface UserApi {
+@RequestMapping("/api/account")
+public interface AccountApi {
 
-  @ApiOperation("Get user API")
+  @ApiOperation("Get active user API")
   @ApiResponse(code = 200, message = "OK", response = UserModel.class)
   @GetMapping
   @ResponseStatus(HttpStatus.OK)

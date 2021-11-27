@@ -1,0 +1,24 @@
+{
+  "properties": [
+    {
+      "name": "spring.auth.admin.email",
+      "type": "java.lang.String",
+      "description": "Pre-created administrator email."
+    },
+    {
+      "name": "spring.auth.admin.password",
+      "type": "java.lang.String",
+      "description": "Pre-created administrator password."
+    },
+    {
+      "name": "spring.auth.student.email",
+      "type": "java.lang.String",
+      "description": "Pre-created user email."
+    },
+    {
+      "name": "spring.auth.student.password",
+      "type": "java.lang.String",
+      "description": "Pre-created user password."
+    }
+  ]
+}

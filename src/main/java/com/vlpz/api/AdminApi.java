@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@Api(tags = "Admin management REST API")
+@Api(tags = "Admin utilities REST API")
 @ApiResponses({
     @ApiResponse(code = 404, message = "Not found"),
     @ApiResponse(code = 500, message = "Internal Server Error")

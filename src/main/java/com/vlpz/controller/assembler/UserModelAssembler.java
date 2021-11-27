@@ -1,7 +1,7 @@
 package com.vlpz.controller.assembler;
 
 import com.vlpz.controller.AdminController;
-import com.vlpz.controller.UserController;
+import com.vlpz.controller.AccountController;
 import com.vlpz.controller.model.UserModel;
 import com.vlpz.dto.UserDto;
 import com.vlpz.model.User;
@@ -24,16 +24,16 @@ public class UserModelAssembler extends RepresentationModelAssemblerSupport<User
   public static final String DELETE_REL = "delete";
 
   public UserModelAssembler() {
-    super(UserController.class, UserModel.class);
+    super(AccountController.class, UserModel.class);
   }
 
   @Override
   public UserModel toModel(UserDto entity) {
     UserModel userModel = new UserModel(entity);
 
-    Link getLink = linkTo(methodOn(UserController.class).getUser(new User())).withRel(GET_REL);
-    Link updateLink = linkTo(methodOn(UserController.class).updateUser(null)).withRel(UPDATE_REL);
-    Link deleteLink = linkTo(methodOn(UserController.class).deleteUser(new User()))
+    Link getLink = linkTo(methodOn(AccountController.class).getUser(new User())).withRel(GET_REL);
+    Link updateLink = linkTo(methodOn(AccountController.class).updateUser(null)).withRel(UPDATE_REL);
+    Link deleteLink = linkTo(methodOn(AccountController.class).deleteUser(new User()))
         .withRel(DELETE_REL);
 
     return userModel.add(getLink, updateLink, deleteLink);

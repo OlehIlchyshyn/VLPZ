@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = "Auth management REST API")
+@Api(tags = "Authorization REST API")
 @ApiResponses({
     @ApiResponse(code = 404, message = "Not found"),
     @ApiResponse(code = 500, message = "Internal Server Error")

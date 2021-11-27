@@ -55,7 +55,7 @@ public class AuthServiceImpl implements AuthService {
     user.setRole(role);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user = userRepository.save(user);
-    log.info("Used with id {} successfully registered", user.getId());
+    log.info("User with id {} successfully registered", user.getId());
 
     return signIn(userDto);
   }

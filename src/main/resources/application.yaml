@@ -9,5 +9,8 @@ spring:
 
   auth:
     admin:
-      password: admin
       email: admin@mail.com
+      password: admin
+    student:
+      email: user@mail.com
+      password: user
