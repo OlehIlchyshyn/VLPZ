@@ -30,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
   private final AuthenticationManager authenticationManager;
 
   @Value("${spring.auth.admin-domain}")
-  private final String ADMIN_DOMAIN;
+  private String ADMIN_DOMAIN;
 
   @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
