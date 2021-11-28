@@ -56,7 +56,7 @@ public class AuthServiceImpl implements AuthService {
     User user = mapUserDtoToUser(userDto);
     log.info("createUser: about to register a new user with email {}", user.getEmail());
 
-    user.setRole(userDto.getEmail().contains(ADMIN_DOMAIN) ? Role.ROLE_ADMIN : Role.ROLE_STUDENT);
+    user.setRole(userDto.getEmail().contains(ADMIN_DOMAIN) ? Role.ADMIN : Role.STUDENT);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user = userRepository.save(user);
     log.info("User with id {} successfully registered", user.getId());
