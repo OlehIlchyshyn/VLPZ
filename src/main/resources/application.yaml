@@ -11,11 +11,12 @@ spring:
       matching-strategy: ANT_PATH_MATCHER
   auth:
     admin:
-      email: admin@mail.com
+      email: admin@lpnu.ua
       password: admin
     student:
       email: user@mail.com
       password: user
+    admin-domain: lpnu.ua
 
   datasource:
     driver-class-name: org.postgresql.Driver

@@ -4,7 +4,6 @@ import com.vlpz.api.AuthApi;
 import com.vlpz.controller.assembler.UserModelAssembler;
 import com.vlpz.controller.model.UserModel;
 import com.vlpz.dto.UserDto;
-import com.vlpz.model.enums.Role;
 import com.vlpz.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +23,7 @@ public class AuthController implements AuthApi {
 
   @Override
   public UserModel signUp(UserDto userDto) {
-    return modelAssembler.toModel(authService.signUp(userDto, Role.ROLE_STUDENT));
+    return modelAssembler.toModel(authService.signUp(userDto));
   }
 
   @Override

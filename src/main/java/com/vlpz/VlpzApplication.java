@@ -1,16 +1,10 @@
 package com.vlpz;
 
-import com.vlpz.dto.StatisticsDto;
 import com.vlpz.dto.TaskDto;
 import com.vlpz.dto.UserDto;
-import com.vlpz.model.Task;
-import com.vlpz.model.User;
-import com.vlpz.model.enums.Complexity;
-import com.vlpz.model.enums.Role;
 import com.vlpz.service.AuthService;
 import com.vlpz.service.StatisticsService;
 import com.vlpz.service.TaskService;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -37,14 +31,14 @@ public class VlpzApplication {
 			studentDto.setName("Student");
 			studentDto.setEmail(studentEmail);
 			studentDto.setPassword(studentPassword);
-			studentDto = authService.signUp(studentDto, Role.ROLE_STUDENT);
+			studentDto = authService.signUp(studentDto);
 			authService.signOut();
 
 			UserDto adminDto = new UserDto();
 			adminDto.setName("Admin");
 			adminDto.setEmail(adminEmail);
 			adminDto.setPassword(adminPassword);
-			authService.signUp(adminDto, Role.ROLE_ADMIN);
+			authService.signUp(adminDto);
 
 			TaskDto taskDto = new TaskDto();
 			taskDto.setCaption("Example");

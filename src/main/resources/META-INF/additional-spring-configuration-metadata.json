@@ -19,6 +19,11 @@
       "name": "spring.auth.student.password",
       "type": "java.lang.String",
       "description": "Pre-created user password."
+    },
+    {
+      "name": "spring.auth.admin-domain",
+      "type": "java.lang.String",
+      "description": "Domain, for which newly registered users will be assigned ADMIN role."
     }
   ]
 }

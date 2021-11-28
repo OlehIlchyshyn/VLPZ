@@ -7,6 +7,7 @@ import com.vlpz.repository.UserRepository;
 import com.vlpz.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -28,6 +29,9 @@ public class AuthServiceImpl implements AuthService {
   private final PasswordEncoder passwordEncoder;
   private final AuthenticationManager authenticationManager;
 
+  @Value("${spring.auth.admin-domain}")
+  private final String ADMIN_DOMAIN;
+
   @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
     return userRepository.findByEmail(email)
@@ -48,11 +52,11 @@ public class AuthServiceImpl implements AuthService {
   }
 
   @Override
-  public UserDto signUp(UserDto userDto, Role role) {
+  public UserDto signUp(UserDto userDto) {
     User user = mapUserDtoToUser(userDto);
     log.info("createUser: about to register a new user with email {}", user.getEmail());
 
-    user.setRole(role);
+    user.setRole(userDto.getEmail().contains(ADMIN_DOMAIN) ? Role.ROLE_ADMIN : Role.ROLE_STUDENT);
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     user = userRepository.save(user);
     log.info("User with id {} successfully registered", user.getId());
