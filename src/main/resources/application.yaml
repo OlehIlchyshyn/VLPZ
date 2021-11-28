@@ -6,7 +6,6 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
-
   auth:
     admin:
       email: admin@mail.com
@@ -14,3 +13,8 @@ spring:
     student:
       email: user@mail.com
       password: user
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
