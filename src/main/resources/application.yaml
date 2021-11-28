@@ -3,6 +3,9 @@ spring:
     default-property-inclusion: non_null
   jpa:
     show-sql: true
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
@@ -13,6 +16,7 @@ spring:
     student:
       email: user@mail.com
       password: user
+
   datasource:
     driver-class-name: org.postgresql.Driver
     url: ${JDBC_DATABASE_URL}
