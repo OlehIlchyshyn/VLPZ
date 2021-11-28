@@ -24,7 +24,7 @@ public @interface FieldMatch {
 
   String second();
 
-  String message() default "{com.vlpz.dto.validation.FieldMatch.message}";
+  String message() default "Fields does not match";
 
   Class<?>[] groups() default {};
 

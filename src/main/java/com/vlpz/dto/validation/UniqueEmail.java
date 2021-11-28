@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Constraint(validatedBy = UniqueEmailValidator.class)
 public @interface UniqueEmail {
 
-  String message() default "{com.vlpz.dto.validation.UniqueEmail.message}";
+  String message() default "{Email is not unique}";
 
   Class<?>[] groups() default {};
 
