@@ -2,6 +2,7 @@ package com.vlpz.service.impl;
 
 import com.vlpz.dto.UserDto;
 import com.vlpz.model.User;
+import com.vlpz.model.enums.Role;
 import com.vlpz.repository.UserRepository;
 import com.vlpz.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -37,9 +38,12 @@ public class UserServiceImpl implements UserService {
     return mapUserToUserDto(user);
   }
 
-  static User mapUserDtoToUser(UserDto userDto) {
+  public static User mapUserDtoToUser(UserDto userDto) {
     log.debug("mapUserDtoToUser: map to User from UserDto: {}", userDto);
     User user = new User();
+    if (userDto.getRole() != null) {
+      user.setRole(Role.valueOf(userDto.getRole()));
+    }
     BeanUtils.copyProperties(userDto, user);
     return user;
   }
@@ -48,6 +52,7 @@ public class UserServiceImpl implements UserService {
     UserDto userDto = new UserDto();
     BeanUtils.copyProperties(user, userDto);
     userDto.setPassword(null);
+    userDto.setRole(user.getRole().name());
     log.debug("mapUserToUserDto: map from User to UserDto: {}", userDto);
     return userDto;
   }

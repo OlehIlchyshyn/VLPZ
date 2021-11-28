@@ -1,10 +1,12 @@
 package com.vlpz.api;
 
 import com.vlpz.controller.model.TaskModel;
+import com.vlpz.dto.StatisticsDto;
 import com.vlpz.dto.TaskAnswerDto;
 import com.vlpz.dto.TaskDto;
 import com.vlpz.dto.validation.group.OnCreate;
 import com.vlpz.dto.validation.group.OnUpdate;
+import com.vlpz.model.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -12,8 +14,11 @@ import io.swagger.annotations.ApiResponses;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Api(tags = "Task management REST API")
 @ApiResponses({
@@ -53,7 +58,13 @@ public interface TaskApi {
     ResponseEntity<Void> deleteTask(@PathVariable Long id);
 
     @ApiOperation("Submit task result API")
-    @ApiResponse(code = 200, message = "OK", response = Boolean.class)
-    @PostMapping("/{id}")
-    boolean submitResult(@PathVariable Long id, @RequestBody @Validated TaskAnswerDto taskAnswerDto);
+    @ApiResponse(code = 200, message = "OK", response = StatisticsDto.class)
+    @PostMapping("/{taskId}")
+    StatisticsDto submitResult(@AuthenticationPrincipal User user, @PathVariable Long taskId, @RequestBody @Validated TaskAnswerDto taskAnswerDto);
+
+    @ApiOperation("Get statistics for task API")
+    @ApiResponse(code = 200, message = "OK", response = StatisticsDto.class, responseContainer = "List")
+    @GetMapping("/{id}/statistics")
+    @ResponseStatus(HttpStatus.OK)
+    List<StatisticsDto> getStatistics(@PathVariable Long id);
 }

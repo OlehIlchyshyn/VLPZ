@@ -48,4 +48,8 @@ public class UserDto {
   @UniqueEmail(groups = {OnRegister.class, OnUpdate.class})
   private String email;
 
+  @JsonProperty(access = READ_ONLY)
+  @Null(groups = {OnRegister.class, OnUpdate.class, OnSignIn.class})
+  private String role;
+
 }

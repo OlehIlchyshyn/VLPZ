@@ -1,6 +1,7 @@
 package com.vlpz.api;
 
 import com.vlpz.controller.model.UserModel;
+import com.vlpz.dto.StatisticsDto;
 import com.vlpz.dto.UserDto;
 import com.vlpz.dto.validation.group.OnUpdate;
 import com.vlpz.model.User;
@@ -14,7 +15,9 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@Api(tags = "User management REST API")
+import java.util.List;
+
+@Api(tags = "User account REST API")
 @ApiResponses({
     @ApiResponse(code = 404, message = "Not found"),
     @ApiResponse(code = 500, message = "Internal Server Error")
@@ -39,4 +42,9 @@ public interface AccountApi {
   @DeleteMapping
   ResponseEntity<Void> deleteUser(@AuthenticationPrincipal User user);
 
+  @ApiOperation("Get statistics for user API")
+  @ApiResponse(code = 200, message = "OK", response = StatisticsDto.class, responseContainer = "List")
+  @GetMapping("/statistics")
+  @ResponseStatus(HttpStatus.OK)
+  List<StatisticsDto> getStatistics(@AuthenticationPrincipal User user);
 }

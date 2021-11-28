@@ -2,14 +2,12 @@ package com.vlpz.service.impl;
 
 import com.vlpz.dto.TaskDto;
 import com.vlpz.model.Task;
-import com.vlpz.model.User;
 import com.vlpz.model.enums.Complexity;
 import com.vlpz.repository.TaskRepository;
 import com.vlpz.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -63,7 +61,7 @@ public class TaskServiceImpl implements TaskService {
         taskRepository.deleteById(id);
     }
 
-    static Task mapTaskDtoToTask(TaskDto taskDto) {
+    public static Task mapTaskDtoToTask(TaskDto taskDto) {
         log.debug("mapTaskDtoToTask: map to Task from TaskDto: {}", taskDto);
         Task task = new Task();
         BeanUtils.copyProperties(taskDto, task);
@@ -71,7 +69,7 @@ public class TaskServiceImpl implements TaskService {
         return task;
     }
 
-    static TaskDto mapTaskToTaskDto(Task task) {
+    public static TaskDto mapTaskToTaskDto(Task task) {
         TaskDto taskDto = new TaskDto();
         BeanUtils.copyProperties(task, taskDto);
         taskDto.setComplexity(task.getComplexity().name());
